@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NETHUWH-XMD-URL-GENARATED</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #111;
+        color: white;
+        padding: 20px;
+    }
+    h1 {
+        color: #0f0;
+    }
+    input[type="file"] {
+        margin: 20px;
+    }
+    img {
+        max-width: 300px;
+        margin-top: 20px;
+        border: 2px solid white;
+        border-radius: 8px;
+    }
+    .link-box {
+        margin-top: 15px;
+    }
+    input[type="text"] {
+        width: 80%;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+    }
+    button {
+        padding: 8px 15px;
+        margin-left: 5px;
+        border: none;
+        background: #0f0;
+        color: black;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    footer {
+        margin-top: 40px;
+        font-size: 14px;
+        color: #888;
+    }
+</style>
+</head>
+<body>
+    <h1>📷 NETHUWH-XMD-URL-GENARATED</h1>
+    <input type="file" id="fileInput" accept="image/*">
+    <br>
+    <img id="preview" style="display:none;">
+    <div class="link-box" style="display:none;">
+        <input type="text" id="imageLink" readonly>
+        <button onclick="copyLink()">Copy</button>
+    </div>
+
+    <footer>Foster = By NETHUWH CODER</footer>
+
+<script>
+document.getElementById('fileInput').addEventListener('change', function() {
+    let file = this.files[0];
+    if (!file) return;
+
+    let reader = new FileReader();
+    reader.onload = function(e) {
+        let imageUrl = e.target.result;
+        document.getElementById('preview').src = imageUrl;
+        document.getElementById('preview').style.display = 'block';
+        document.getElementById('imageLink').value = imageUrl;
+        document.querySelector('.link-box').style.display = 'block';
+    }
+    reader.readAsDataURL(file);
+});
+
+function copyLink() {
+    let link = document.getElementById('imageLink');
+    link.select();
+    link.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    alert('✅ Link copied!');
+}
+</script>
+</body>
+</html>
